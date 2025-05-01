@@ -137,9 +137,9 @@ class CTDetDataset(data.Dataset):
       del ret['wh']
     if self.opt.reg_offset:
       ret.update({'reg': reg})
-    if self.opt.debug > 0 or not self.split == 'train':
-      gt_det = np.array(gt_det, dtype=np.float32) if len(gt_det) > 0 else \
-               np.zeros((1, 6), dtype=np.float32)
-      meta = {'c': c, 's': s, 'gt_det': gt_det, 'img_id': img_id}
-      ret['meta'] = meta
+    # if self.opt.debug > 0 or not self.split == 'train':  GVNC
+    #   gt_det = np.array(gt_det, dtype=np.float32) if len(gt_det) > 0 else \
+    #            np.zeros((1, 6), dtype=np.float32)
+    #   meta = {'c': c, 's': s, 'gt_det': gt_det, 'img_id': img_id}
+    #   ret['meta'] = meta
     return ret

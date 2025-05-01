@@ -252,6 +252,17 @@ class exkp(nn.Module):
 
     def forward(self, image):
         # print('image shape', image.shape)
+        pad = []
+        def pad_to_2n(x):
+            s = 1
+            while s<x:
+                s *= 2
+            return s-x
+        for i in [-1, -2]:
+            pad += [0, pad_to_2n(image.shape[i])]
+        if max(pad) > 0:
+            image = nn.functional.pad(image, pad, "constant", 0)
+                
         inter = self.pre(image)
         outs  = []
 

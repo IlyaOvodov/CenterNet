@@ -407,7 +407,7 @@ def dla169(pretrained=None, **kwargs):  # DLA-169
     model = DLA([1, 1, 2, 3, 5, 1], [16, 32, 128, 256, 512, 1024],
                 block=Bottleneck, residual_root=True, **kwargs)
     if pretrained is not None:
-        model.load_pretrained_model(pretrained, 'dla169')
+        model.load_pretrained_model(data='imagenet', name='dla169', hash='0914e092')
     return model
 
 
